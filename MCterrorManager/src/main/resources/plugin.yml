@@ -1,0 +1,26 @@
+name: MCterrorManager
+main: mocha.plugin.mc.MCterrorManager
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ 채팅 : 
+  permission : mocha.plugin.chat.cmd
+  default : OP
+  description : "채팅을 관리합니다."
+ 청소 : 
+  permission : mocha.plugin.personalchat.cmd
+  default : true
+  description : "개인채팅을 청소합니다."
+ 아이템 : 
+  permission : mocha.plugin.itemban.cmd
+  default : OP
+  description : "아이템을 밴 하거나 풉니다."
+  
+permissions : 
+ mocha.plugin.chat.cmd : 
+  default : OP
+ mocha.plugin.personalchat.cmd : 
+  default : true

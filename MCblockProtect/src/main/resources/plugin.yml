@@ -1,0 +1,16 @@
+name: MCblockProtect
+main: mocha.plugin.mc.MCblockProtect
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ 보호 : 
+  permission : mocha.plugin.protect.cmd
+  default : OP
+  description : "서버의 블럭 보호를 켜거나 끕니다."
+  
+permissions : 
+ mocha.plugin.protect.cmd : 
+  default : OP

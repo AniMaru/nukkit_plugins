@@ -1,0 +1,6 @@
+name: MCmorning
+main: mocha.plugin.mc.MCmorning
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md

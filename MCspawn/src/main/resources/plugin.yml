@@ -1,0 +1,17 @@
+name: MCspawn
+main: mocha.plugin.mc.MCspawn
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ spawn : 
+  permission : mocha.plugin.spawn.cmd
+  default : true 
+  description : "스폰으로 이돌합니다."
+  aliases : ["스폰", "넴주", "sp"]
+  
+permissions : 
+ mocha.plugin.spawn.cmd : 
+  default : true 
