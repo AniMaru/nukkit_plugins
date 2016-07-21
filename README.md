@@ -12,8 +12,8 @@ nukkit plugins
 
 ---------------
 ####다운로드
-allPlayer [다운로드](www.naver.com)<br>
-blockProtect [다운로드]
+allPlayer [다운로드](https://github.com/moca127/nukkit_plugins/raw/master/MCallPlayer/SNAPSHOT/MCallPlayer-1.0-SNAPSHOT.jar)<br>
+blockProtect [다운로드](https://github.com/moca127/nukkit_plugins/raw/master/MCblockProtect/SNAPSHOT/MCblockProtect-1.0-SNAPSHOT.jar)<br>
 morning [다운로드]
 spawn [다운로드]
 terrorManager [다운로드]
