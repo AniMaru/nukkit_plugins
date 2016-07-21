@@ -12,11 +12,9 @@ nukkit plugins
 
 ---------------
 ####다운로드
-allPlayer [다운로드][naver]<br>
+allPlayer [다운로드](www.naver.com)<br>
 blockProtect [다운로드]
 morning [다운로드]
 spawn [다운로드]
 terrorManager [다운로드]
 warp [다운로드]
-
-link : [naver] http://www.naver.com
