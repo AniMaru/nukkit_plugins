@@ -1,11 +1,15 @@
 package mocha.plugin.mc;
 
+import java.util.LinkedHashMap;
+import java.util.List;
+
+import com.google.gson.internal.LinkedTreeMap;
+
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
 import cn.nukkit.command.CommandSender;
 import cn.nukkit.event.Listener;
 import cn.nukkit.level.Position;
-import cn.nukkit.math.Vector3;
 import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.plugin.PluginDescription;
 import cn.nukkit.utils.Config;
@@ -46,7 +50,9 @@ public class MCwarp extends PluginBase implements Listener{
 				}
 				else{
 					Player player = (Player)sender;
-					warps.set(args[0], new Vector3(player.getX(),player.getY(),player.getZ()));
+					LinkedHashMap<String,Object> map = new LinkedHashMap<>();
+					map.put(args[0], new Object[]{player.getX(),player.getY(),player.getZ(),player.getLevel().getFolderName()});
+					warps.set(args[0], map);
 					save();
 					sender.sendMessage(TextFormat.AQUA+"[알림]워프 "+args[0]+"(이)가 생성되었습니다.");
 				}
@@ -55,24 +61,31 @@ public class MCwarp extends PluginBase implements Listener{
 			}
 		}
 		if(command.getName().equals("워프목록")){
-			try{
-				if(args.length == 0){
+				try{
+					if(args.length == 0){
 					sender.sendMessage(TextFormat.AQUA+"=====[워프목록]=====");
 					for(String s : warps.getKeys()){
 						sender.sendMessage(s);
 					}
-					sender.sendMessage(TextFormat.YELLOW+"/워프목록 [워프이름]:워프의 위치보기");
+					sender.sendMessage(TextFormat.YELLOW+"/워프목록 <워프이름>:워프위치보기");
+					}
+					else{
+						LinkedTreeMap<String, Object> list = (LinkedTreeMap<String, Object>)warps.get(args[0],new LinkedTreeMap<String,Object>());
+						List<Object> val = (List<Object>)list.get(args[0]);
+						double x,y,z;
+						x = toDouble(val.get(0));
+						y = toDouble(val.get(1));
+						z = toDouble(val.get(2));
+						String levelName = val.get(3).toString();
+						sender.sendMessage(TextFormat.LIGHT_PURPLE+"["+args[0]+"]");
+						sender.sendMessage(TextFormat.LIGHT_PURPLE+"X:"+(int)x);
+						sender.sendMessage(TextFormat.LIGHT_PURPLE+"Y:"+(int)y);
+						sender.sendMessage(TextFormat.LIGHT_PURPLE+"Z:"+(int)z);
+						sender.sendMessage(TextFormat.LIGHT_PURPLE+"world:"+levelName);
+					}
+				}catch(Exception e){
+					sender.sendMessage(TextFormat.RED+"[오류]같은 이름의 워프를 발견할 수 없습니다.");
 				}
-				else{
-					Vector3 vector3 = (Vector3)warps.get(args[0]);
-					sender.sendMessage(TextFormat.LIGHT_PURPLE+"["+args[0]+"]");
-					sender.sendMessage(TextFormat.LIGHT_PURPLE+"X : "+vector3.getX());
-					sender.sendMessage(TextFormat.LIGHT_PURPLE+"Y : "+vector3.getY());
-					sender.sendMessage(TextFormat.LIGHT_PURPLE+"Z : "+vector3.getZ());
-				}
-			}catch (Exception e) {
-				sender.sendMessage(TextFormat.RED+"[오류]같은 이름의 워프를 발결하지 못했습니다.");
-			}
 		}
 		if(command.getName().equals("워프삭제")){
 			try{
@@ -97,12 +110,18 @@ public class MCwarp extends PluginBase implements Listener{
 			}
 			else{
 				try{
+					LinkedTreeMap<String, Object> list = (LinkedTreeMap<String, Object>)warps.get(args[0],new LinkedTreeMap<String,Object>());
+					List<Object> val = (List<Object>)list.get(args[0]);
+					double x,y,z;
+					x = toDouble(val.get(0));
+					y = toDouble(val.get(1));
+					z = toDouble(val.get(2));
+					String levelName = val.get(3).toString();
 					Player player = (Player)sender;
-					Vector3 pos = (Vector3)warps.get(args[0]); 
-					player.teleport(new Position(pos.getX(),pos.getY(),pos.getZ()));
+					player.teleport(new Position(x,y,z,getServer().getLevelByName(levelName)));
 					sender.sendMessage(TextFormat.AQUA+"[알림]"+args[0]+"로 워프하셨습니다.");
 				}catch(Exception e){
-					sender.sendMessage(TextFormat.AQUA+"[오류]같은 이름의 워프를 발견 할 수 없습니다.");
+					sender.sendMessage(TextFormat.RED+"[오류]같은 이름의 워프를 발견할 수 없습니다.");
 				}
 			}
 		}
@@ -110,5 +129,15 @@ public class MCwarp extends PluginBase implements Listener{
 	}
 	public void save(){
 		warps.save();
+	}
+	public static double toDouble(Object obj) {
+		if (obj instanceof Integer)
+			return ((Integer) obj).doubleValue();
+		if (obj instanceof Double)
+			return ((Double) obj).doubleValue();
+		if (obj instanceof String) {
+			return Double.parseDouble(obj.toString());
+		}
+		return 0.0D;
 	}
 }	
