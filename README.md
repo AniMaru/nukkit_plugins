@@ -18,3 +18,4 @@ morning [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MC
 spawn [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCspawn/SNAPSHOT/MCspawn-1.0-SNAPSHOT.jar)<br>
 terrorManager [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCterrorManager/SNAPSHOT/MCterrorManager-1.0-SNAPSHOT.jar)<br>
 warp [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCwarp/release/MCwarp-1.0-release.jar)<br>
+MonsterTag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MonsterTag/SNAPSHOT/MonsterTag-1.0-SNAPSHOT.jar)<br>
