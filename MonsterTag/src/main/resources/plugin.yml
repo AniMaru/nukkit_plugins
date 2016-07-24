@@ -1,0 +1,17 @@
+name: MonsterTag
+main: mocha.plugin.mc.MonsterTag
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ monstertag : 
+  permission : mocha.plugin.monstertag.cmd
+  default : OP
+  description : "몹들의 칭호를 변경합니다."
+  aliases : ["mt","몬스터태그","몬스터칭호","몹태그","몹칭호","mobtag"]
+  
+permissions : 
+ mocha.plugin.monstertag.cmd : 
+  default : OP
