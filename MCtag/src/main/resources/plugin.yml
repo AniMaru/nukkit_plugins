@@ -1,0 +1,29 @@
+name: MCtag
+main: mocha.plugin.mc.MCtag
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ 칭호설정 : 
+  permission : mocha.plugin.settag.cmd 
+  default : OP
+  description : "칭호를 설정합니다."
+  aliases : ["settag","칭호"]
+ 닉네임 : 
+  permission : mocha.plugin.setname.cmd 
+  default : OP
+  description : "이름를 설정합니다."
+  aliases : ["이름설정","이름","닉네임설정"]
+ 채팅색 : 
+  permission : mocha.plugin.setchatcolor.cmd 
+  default : OP
+  description : "플레이어의 채팅색를 설정합니다."
+permissions : 
+ mocha.plugin.settag.cmd : 
+  default : OP
+ mocha.plugin.setname.cmd : 
+  default : OP 
+ mocha.plugin.setchatcolor.cmd : 
+  default : OP
