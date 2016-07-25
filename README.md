@@ -9,6 +9,8 @@ nukkit plugins
 + 2016.7.21 spawn 개발
 + 2016.7.21 terrorManager 개발
 + 2016.7.21 warp 개발
++ 2016.7.24 MonsterTag 개발
++ 2016.7.25 MCtag 개발
 
 ---------------
 #####최신버전 다운로드
@@ -19,3 +21,4 @@ spawn [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCsp
 terrorManager [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCterrorManager/SNAPSHOT/MCterrorManager-1.0-SNAPSHOT.jar)<br>
 warp [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCwarp/release/MCwarp-1.0-release.jar)<br>
 MonsterTag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MonsterTag/SNAPSHOT/MonsterTag-1.0-SNAPSHOT.jar)<br>
+MCtag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCtag/SNAPSHOT/MCtag-1.0-SNAPSHOT.jar)<br>
