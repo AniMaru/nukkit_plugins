@@ -5,12 +5,14 @@ nukkit plugins
 #####개발작
 + 2016.7.21 allPlayer 개발
 + 2016.7.21 blockProtect 개발
++ 2016.7.21 police 개발(미공개)
 + 2016.7.21 morning 개발
 + 2016.7.21 spawn 개발
 + 2016.7.21 terrorManager 개발
 + 2016.7.21 warp 개발
 + 2016.7.24 MonsterTag 개발
 + 2016.7.25 MCtag 개발
++ 2016.7.35 police 공개
 
 ---------------
 #####최신버전 다운로드
@@ -22,3 +24,4 @@ terrorManager [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/mas
 warp [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCwarp/release/MCwarp-1.0-release.jar)<br>
 MonsterTag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MonsterTag/SNAPSHOT/MonsterTag-1.0-SNAPSHOT.jar)<br>
 MCtag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCtag/SNAPSHOT/MCtag-1.0-SNAPSHOT.jar)<br>
+MCpolice [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCpolice/SNAPSHOT/MCpolice-1.0-SNAPSHOT.jar)<br>
