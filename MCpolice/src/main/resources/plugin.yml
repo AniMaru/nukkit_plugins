@@ -1,0 +1,31 @@
+name: MCpolice
+main: mocha.plugin.mc.MCpolice
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ 경찰추가 : 
+  permission : mocha.plugin.addpolice.cmd
+  default : OP
+  description : "경찰을 추가합니다."
+ 경찰삭제 : 
+  permission : mocha.plugin.delpolice.cmd
+  default : OP
+  description : "경찰을 삭제합니다."
+ 경찰 : 
+  permission : mocha.plugin.police.cmd
+  default : true
+  description : "경찰의 권한."
+  
+permissions : 
+ mocha.plugin.* : 
+  default : OP
+  children : 
+   mocha.plugin.addpolice.cmd : 
+    default : OP
+   mocha.plugin.delpolice.cmd : 
+    default : OP
+   mocha.plugin.police.cmd : 
+    default : true
