@@ -1,0 +1,20 @@
+name: MCrandoms
+main: mocha.plugin.mc.MCrandoms
+author: mocha
+version: 1.0-SNAPSHOT
+api: [1.0.0]
+website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
+
+commands : 
+ 전쟁시작 : 
+  permission : mocha.plugin.randoms.cmd
+  default : OP
+  description : "랜덤무기전쟁을 시작합니다."
+ 전쟁시작 : 
+  permission : mocha.plugin.randoms.cmd
+  default : OP
+  description : "랜덤무기전쟁을 강제종료 합니다."
+  
+permissions : 
+ mocha.plugin.randoms.cmd : 
+  default : OP
