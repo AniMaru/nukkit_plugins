@@ -59,10 +59,14 @@ public class MCpolice extends PluginBase implements Listener{
 				}
 				else if(sender.getName().equals(policeDB.get(sender.getName()))){
 					if(args[0].equals("밴")){
-						sender.sendMessage(TextFormat.AQUA+"[알림]"+args[1]+"을 밴하였습니다.");
 						Player player = this.getServer().getPlayer(args[1]);
-						player.kick(TextFormat.RED+"경찰에 의해 밴 되셨습니다.");
-						player.setBanned(true);
+						if(!player.isOp()){
+							sender.sendMessage(TextFormat.AQUA+"[알림]"+args[1]+"을 밴하였습니다.");
+							player.kick(TextFormat.RED+"경찰에 의해 밴 되셨습니다.");
+							player.setBanned(true);
+						}else{
+							sender.sendMessage(TextFormat.RED+"오피를 밴하실 순 없습닏다.");
+						}
 					}
 					else if(args[0].equals("킥")){
 						Player player =this.getServer().getPlayer(args[1]);
