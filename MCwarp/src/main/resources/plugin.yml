@@ -1,7 +1,7 @@
 name: MCwarp
 main: mocha.plugin.mc.MCwarp
 author: mocha
-version: 1.0-release
+version: 1.1-release
 api: [1.0.0]
 website: https://github.com/moca127/MOCHA-EULA/blob/master/LICENSE.md
 
@@ -16,11 +16,6 @@ commands :
   default : OP
   description : "워프를 삭제합니다."
   aliases : ["delwarp","warpdel"]
- 워프목록 : 
-  permission : mocha.plugin.warplist.cmd
-  default : true
-  description : "워프목록을 확인합니다."
-  aliases : ["listwarp","warplist","워프리스트"]
  워프 : 
   permission : mocha.plugin.warp.cmd
   default : true
@@ -32,7 +27,5 @@ permissions :
   default : OP
  mocha.plugin.delwarp.cmd : 
   default : OP
- mocha.plugin.warplist.cmd : 
-  default : true
  mocha.plugin.warp.cmd : 
   default : true

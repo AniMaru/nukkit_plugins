@@ -1,9 +1,6 @@
 package mocha.plugin.mc;
 
 import java.util.LinkedHashMap;
-import java.util.List;
-
-import com.google.gson.internal.LinkedTreeMap;
 
 import cn.nukkit.Player;
 import cn.nukkit.command.Command;
@@ -27,8 +24,7 @@ public class MCwarp extends PluginBase implements Listener{
 		this.getLogger().info(TextFormat.DARK_RED + "본 플러그인은 MOCHA-EULA 최종 사용자 라이센스를 사용중입니다.");
 		this.getLogger().info(TextFormat.DARK_RED + "MOCHA-EULA:"+pd.getWebsite());
 		getDataFolder().mkdirs();
-		warps = new Config(getDataFolder()+"/warps.json",Config.JSON);
-		save();
+		warps = new Config(getDataFolder()+"/warps.yml",Config.YAML);
 	}
 	@Override
 	public void onDisable() {
@@ -38,91 +34,72 @@ public class MCwarp extends PluginBase implements Listener{
 		this.getLogger().info(TextFormat.DARK_RED + "MCOHA-EULA:"+pd.getWebsite());
 		save();
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-		if(command.getName().equals("워프추가")){
-			try{
-				if(!sender.isPlayer()){
-					sender.sendMessage(TextFormat.RED+"[오류]게임 안에서만 사용 할 수 있습니다.");
-				}
-				else if(args.length == 0){
-					sender.sendMessage(TextFormat.AQUA+"[오류]워프이름을 입력하세요.");
-				}
-				else{
-					Player player = (Player)sender;
-					LinkedHashMap<String,Object> map = new LinkedHashMap<>();
-					map.put(args[0], new Object[]{player.getX(),player.getY(),player.getZ(),player.getLevel().getFolderName()});
+		if(command.getName().toLowerCase().equals("워프추가")){
+			if(sender.isPlayer()){
+				Player player = (Player)sender;
+				switch (args.length) {
+				case 0:
+					sender.sendMessage(TextFormat.RED+"워프이름을 입력해 주세요.");
+				default:
+					sender.sendMessage(TextFormat.AQUA+"[알림]워프"+args[0]+"(이)가 추가되었습니다.");
+					LinkedHashMap<String, Object> map = new LinkedHashMap<>();
+					map.put("x", player.getX());
+					map.put("y", player.getY());
+					map.put("z", player.getZ());
+					map.put("level", player.getLevel().getFolderName());
 					warps.set(args[0], map);
 					save();
-					sender.sendMessage(TextFormat.AQUA+"[알림]워프 "+args[0]+"(이)가 생성되었습니다.");
+					break;
 				}
-			}catch(Exception e){
-				sender.sendMessage(TextFormat.BLUE+"/워프추가 <워프이름>");
+			}
+			else{
+				sender.sendMessage(TextFormat.RED+"게임안에서만 쓸 수있는 명령어 입니다.");
 			}
 		}
-		if(command.getName().equals("워프목록")){
-				try{
-					if(args.length == 0){
-					sender.sendMessage(TextFormat.AQUA+"=====[워프목록]=====");
-					for(String s : warps.getKeys()){
-						sender.sendMessage(s);
-					}
-					sender.sendMessage(TextFormat.YELLOW+"/워프목록 <워프이름>:워프위치보기");
-					}
-					else{
-						LinkedTreeMap<String, Object> list = (LinkedTreeMap<String, Object>)warps.get(args[0],new LinkedTreeMap<String,Object>());
-						List<Object> val = (List<Object>)list.get(args[0]);
-						double x,y,z;
-						x = toDouble(val.get(0));
-						y = toDouble(val.get(1));
-						z = toDouble(val.get(2));
-						String levelName = val.get(3).toString();
-						sender.sendMessage(TextFormat.LIGHT_PURPLE+"["+args[0]+"]");
-						sender.sendMessage(TextFormat.LIGHT_PURPLE+"X:"+(int)x);
-						sender.sendMessage(TextFormat.LIGHT_PURPLE+"Y:"+(int)y);
-						sender.sendMessage(TextFormat.LIGHT_PURPLE+"Z:"+(int)z);
-						sender.sendMessage(TextFormat.LIGHT_PURPLE+"world:"+levelName);
-					}
-				}catch(Exception e){
-					sender.sendMessage(TextFormat.RED+"[오류]같은 이름의 워프를 발견할 수 없습니다.");
-				}
-		}
-		if(command.getName().equals("워프삭제")){
-			try{
-				if(args.length == 0){
-					sender.sendMessage(TextFormat.AQUA+"[오류]워프이름을 입력하세요.");
+		if(command.getName().toLowerCase().equals("워프삭제")){
+			switch (args.length) {
+			case 0:
+				sender.sendMessage(TextFormat.RED+"워프이름을 입력해 주세요.");
+			default:
+				if(warps.get(args[0]) == null){
+					sender.sendMessage(TextFormat.RED+"워프 "+args[0]+"를 찾을 수 없습니다.");
 				}
 				else{
 					warps.remove(args[0]);
 					save();
-					sender.sendMessage(TextFormat.AQUA+"[알림]워프 "+args[0]+"(이)가 삭제되었습니다.");
+					sender.sendMessage(TextFormat.AQUA+"[알림]워프"+args[0]+"를 삭제하였습니다.");
 				}
-			}catch(Exception e){
-				sender.sendMessage(TextFormat.BLUE+"/워프삭제 <워프이름>");
+				break;
 			}
 		}
-		if(command.getName().equals("워프")){
-			if(!sender.isPlayer()){
-				sender.sendMessage(TextFormat.RED+"[오류]게임 안에서만 사용 할 수 있습니다.");
-			}
-			else if(args.length == 0){
-				sender.sendMessage(TextFormat.AQUA+"[오류]워프이름을 입력하세요.");
+		if(command.getName().toLowerCase().equals("워프")){
+			if(sender.isPlayer()){
+				Player player = (Player)sender;
+				switch (args.length) {
+				case 0:
+					sender.sendMessage(TextFormat.RED+"워프이름을 입력해 주세요.");
+					break;
+				default:
+					if(warps.get(args[0]) == null){
+						sender.sendMessage(TextFormat.RED+"워프 "+args[0]+"를 찾을 수 없습니다.");
+					}
+					else{
+						LinkedHashMap<String, Object> map = (LinkedHashMap<String, Object>)warps.get(args[0]);
+						double x,y,z;
+						x = toDouble(map.get("x"));
+						y = toDouble(map.get("y"));
+						z = toDouble(map.get("z"));
+						player.teleport(new Position(x,y,z,getServer().getLevelByName(map.get("level").toString())));
+						sender.sendMessage(TextFormat.AQUA+"[알림]"+args[0]+"로 이동하셨습니다.");
+					}
+					break;
+				}
 			}
 			else{
-				try{
-					LinkedTreeMap<String, Object> list = (LinkedTreeMap<String, Object>)warps.get(args[0],new LinkedTreeMap<String,Object>());
-					List<Object> val = (List<Object>)list.get(args[0]);
-					double x,y,z;
-					x = toDouble(val.get(0));
-					y = toDouble(val.get(1));
-					z = toDouble(val.get(2));
-					String levelName = val.get(3).toString();
-					Player player = (Player)sender;
-					player.teleport(new Position(x,y,z,getServer().getLevelByName(levelName)));
-					sender.sendMessage(TextFormat.AQUA+"[알림]"+args[0]+"로 워프하셨습니다.");
-				}catch(Exception e){
-					sender.sendMessage(TextFormat.RED+"[오류]같은 이름의 워프를 발견할 수 없습니다.");
-				}
+				sender.sendMessage(TextFormat.RED+"게임안에서만 쓸 수있는 명령어 입니다.");
 			}
 		}
 		return super.onCommand(sender, command, label, args);
