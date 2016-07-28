@@ -1,3 +1,7 @@
+/******************************
+@author mocha127
+@date 2016.7.24
+******************************/
 package mocha.plugin.mc;
 
 import java.util.LinkedHashMap;
@@ -14,12 +18,12 @@ import cn.nukkit.utils.Config;
 import cn.nukkit.utils.TextFormat;
 
 public class MonsterTag extends PluginBase implements Listener{
-	public Config tagDB;
+	public Config tagDB; //Config 파일을 사용하기위해 선언
 
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings("deprecation")//사용을 권장하지 않음
 	@Override
 	public void onEnable() {
-		PluginDescription pd = getDescription();
+		PluginDescription pd = getDescription();//plugin description 불러오기
 		super.onEnable();
 		this.getServer().getPluginManager().registerEvents(this, this);
 		this.getLogger().info(TextFormat.GREEN +pd.getName()+" v"+pd.getVersion()+" LOADING ///");
@@ -49,7 +53,7 @@ public class MonsterTag extends PluginBase implements Listener{
 		map.put("Gast","§a젤리");
 		map.put("MagmaCube", "§a마그마큐브");
 		map.put("MooshRoom", "§e버섯소");
-		tagDB = new Config(getDataFolder()+"/tagDB.yml",Config.YAML,map);
+		tagDB = new Config(getDataFolder()+"/tagDB.yml",Config.YAML,map);//사용을 권장하지 않음
 	}
 	@Override
 	public void onDisable() {
@@ -244,7 +248,7 @@ public class MonsterTag extends PluginBase implements Listener{
 		}
 		return super.onCommand(sender, command, label, args);
 	}
-	@EventHandler
+	@EventHandler //nukkit 이벤트를 받아오기위한 애너테이션
 	public void onSpawn(EntitySpawnEvent event){
 		Entity entity = event.getEntity();
 		event.getEntity().setNameTagVisible();
