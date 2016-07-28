@@ -26,4 +26,4 @@ warp [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCwar
 MonsterTag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MonsterTag/SNAPSHOT/MonsterTag-1.0-SNAPSHOT.jar)<br>
 MCtag [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCtag/SNAPSHOT/MCtag-1.0-SNAPSHOT.jar)<br>
 MCpolice [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCpolice/SNAPSHOT/MCpolice-1.0-SNAPSHOT.jar)<br>
-MCrandoms [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCrandoms/SNAPSHOT/MCrandoms-1.0-SNAPSHOT)<br>
+MCrandoms [[다운로드]](https://github.com/moca127/nukkit_plugins/raw/master/MCrandoms/SNAPSHOT/MCrandoms-1.0-SNAPSHOT.jar)<br>
